@@ -14,17 +14,9 @@ class Ability
       # can manage owners, pets, and visits
       
       # can read (costs for) medicines and procedures
-      can :read, Order#Cost
-
-      # they can read their own profile
-      can :show, User do |u|  
-        u.id == user.id
-      end
-
-      # they can update their own profile
-      can :update, User do |u|  
-        u.id == user.id
-      end
+      can :index, Item
+      can :show, Item
+      can :index, Order
 
 
     elsif user.role? :customer 
@@ -33,37 +25,69 @@ class Ability
         user.customer == this_customer
       end
 
-      # they can see lists of pets and visits (controller filters automatically)
-      can :index, OrderItem
-
-      # they can read their own pets' data
       can :show, Order do |this_order|  
         my_orders = user.customer.orders.map(&:id)
         my_orders.include? this_order.id 
       end
+
+      # they can see lists of pets and visits (controller filters automatically)
+      can :index, Item
+      can :show, Item
+
+      can :update, Customer do |this_customer|
+        this_customer == user.customer
+      end
+
+      can :show, User do |this_user|
+        this_user.id == user.id
+      end
+
+      can :update, User do |this_user| 
+        this_user.id == user.id
+      end
+
 
       can :manage, Customer do |this_customer|
         myself = user.customer
         myself == this_customer
       end
 
-      # they can read their own visits' data
+      can :index, Order
+      can :checkout, Order
+      can :create, Order
+      can :add_to_cart, Order
+      
+      can :create, Address
+      
+      can :show, Address do |this_address|  
+        my_addresses = user.customer.addresses.map(&:id)
+        my_addresses.include? this_address.id 
+      end
+
+      can :update, Address do |this_address|  
+        my_addresses = user.customer.addresses.map(&:id)
+        my_addresses.include? this_address.id 
+      end
+
+      can :index, Address
+
+
+
 
     elsif user.role? :shipper
 
-      can :show, User do |u|  
-        u.id == user.id
-      end
+      can :show, Item
+      can :index, Item
+      can :index, Order
 
-      # they can update their own profile
-      can :update, User do |u|  
-        u.id == user.id
-      end
+      can :show, Order
+      can :show, Address
+
       
     else
-      # guests can only read animals covered (plus home pages)
-      # can :read, Animal
-      can :index, OrderItem
+      can :show, Item
+      can :index, Item
+      can :create, Customer
       
     end
   end

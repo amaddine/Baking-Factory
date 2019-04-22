@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
   end
 
   def show
+    @previous_orders = @address.orders
   end
 
   def new
