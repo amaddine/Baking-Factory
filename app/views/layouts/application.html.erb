@@ -11,11 +11,21 @@
   </head>
 
   <body>
+
+    
     <header>
     <!-- Partials for the topbar and navigation -->
     <%= render :partial => "partials/topbar" %>
-    <%= render :partial => "partials/nav" %>
     </header>
+
+    <% if logged_in? && ( current_user.role?(:baker) || current_user.role?(:shipper) ) %>
+      <%= render :partial => "partials/nav" %>
+    <% elsif logged_in? && current_user.role?(:customer) %>
+      <%= render :partial => "partials/nav_owner" %>
+    <% else %>
+      <%= render :partial => "partials/nav_guest" %>
+    <% end %>
+   
     <main>
     <div class="container">
       <div class="row">

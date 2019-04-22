@@ -22,15 +22,25 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    if @customer.save
-      redirect_to @customer, notice: "#{@customer.proper_name} was added to the system."
-    else
+    @user = User.new
+    @user.role = "customer"
+    
+    if !@user.save
+      @customer.valid?
       render action: 'new'
+    else
+      @customer.user_id = @user.id
+      if @customer.save
+        flash[:notice] = "Successfully created #{@owner.proper_name}."
+        redirect_to customer_path(@customer) 
+      else
+        render action: 'new'
+      end      
     end
   end
 
   def update
-    if @customer.update(customer_params)
+    if @customer.update_attributes(customer_params)
       redirect_to @customer, notice: "#{@customer.proper_name} was revised in the system."
     else
       render action: 'edit'

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'item_price/index'
 
   get 'item_price/show'
@@ -41,14 +47,23 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
 
   # Routes for main resources
+  resources :sessions
+
+
+
+
   resources :addresses
   resources :customers
   resources :orders
   resources :order_items
   resources :item_prices
   resources :users
+  resources :items
+  
   get 'users/new', to: 'users#new', as: :signup
   get 'user/edit', to: 'users#edit', as: :edit_current_user
+  get 'login', to: 'sessions#new', as: :login
+  get 'logout', to: 'sessions#destroy', as: :logout
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
