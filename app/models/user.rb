@@ -31,6 +31,10 @@ class User < ApplicationRecord
     role.downcase.to_sym == authorized_role
   end
 
+  def self.authenticate(email,password)
+    find_by_username(email).try(:authenticate, password)
+  end
+
   # Callbacks
   before_destroy :cannot_destroy_object
   
