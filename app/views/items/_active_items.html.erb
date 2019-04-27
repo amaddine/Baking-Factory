@@ -1,6 +1,7 @@
 <% if @breads.empty? %>
   <h4>No breads being sold at this time.</h4>
 <% else %>
+  <%= render :partial => "partials/title_with_search", locals: {title: "Active Customers"} %>
   <h4>Breads</h4>
   <table class="table table-striped">
     <thead>
