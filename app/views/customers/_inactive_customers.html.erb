@@ -1,4 +1,6 @@
-<% unless @inactive_customers.empty? %>
+<% if @inactive_customers.empty? %>
+	<p><em>No inactive customers at this time.</em></p>
+<% else %>
   <div class="panel clearfix">
     <h3>Inactive Customers</h3>
     <ul>

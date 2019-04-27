@@ -2,3 +2,10 @@
                                                          primary: "all_orders", 
                                                          secondary: nil,
                                                          sidebar: nil} %>
+
+<p><strong>
+
+<% if current_user.role?(:admin) %>
+	<%= link_to "Add a New Order", new_order_path, class: 'waves-effect waves-light btn' %> 
+<% end %>
+</strong></p>

@@ -1,0 +1,23 @@
+<% if current_user.role?(:admin) %>
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Inactive Items</span>
+      <% if @inactive_items.empty? %>
+        <p>No inactive items at this time</p>
+      <% else %>
+        <table class="striped highlight">
+          <thead>
+            <th>Name</th>
+            <th>Category</th>
+          </thead>
+          <% for item in @inactive_items %>
+            <tr>
+              <td><%= link_to item.name, item_path(item) %></td>
+              <td><%= item.category %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
+<% end %>
