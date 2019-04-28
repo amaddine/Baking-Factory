@@ -1,0 +1,22 @@
+
+<div class="form-actions">
+    <%= link_to items_path, class: 'waves-effect waves-light btn' do %>
+      &nbsp;Display All <%# model_name.pluralize.capitalize %>
+    <% end %>
+    &nbsp;&nbsp;
+  
+  <% if can?(:edit, @item) && controller.respond_to?(:edit) %>
+    <%= link_to edit_item_path(@item), class: 'waves-effect waves-light btn' do %>
+        &nbsp;<%= "Edit #{@item.name}" %>
+    <% end %>
+    &nbsp;&nbsp;
+  <% end %>
+    
+  <% if can?(:destroy, @item) && controller.respond_to?(:destroy) %>
+    <%= link_to item_path(@item), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{@item.name}"}, class: 'waves-effect waves-light btn btn-alert' do %>
+        &nbsp;<%= "Delete #{@item.name}" %>
+    <% end %>
+  <% end %>
+
+
+</div>

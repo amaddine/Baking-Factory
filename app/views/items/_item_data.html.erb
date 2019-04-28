@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Item Information for <%= @item.name %></h5><br />
+
+    <b>Category:&nbsp;&nbsp;</b>
+      <%= @item.category %><br /><br />
+
+    <b>Description:&nbsp;&nbsp;</b>
+      <%= @item.description %><br /><br />
+
+    <b>Units Per Item:&nbsp;&nbsp;</b>
+      <%= @item.units_per_item %><br /><br />
+
+    <b>Weight:&nbsp;&nbsp;</b>
+      <%= @item.weight %><br /><br />
+
+    <b>Price:&nbsp;&nbsp;</b>
+      <%= @item.current_price %><br /><br />
+
+    <% if @item.picture.nil? == false %>
+      <b>Active with PATS?&nbsp;&nbsp;</b>
+        <%= @pet.active ? "Yes" : "No" %><br><br><br>
+    <% end %>
+  </div>
+</div>

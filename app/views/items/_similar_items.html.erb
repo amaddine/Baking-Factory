@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Similar Items</span>
+    <table class="striped highlight">
+      <thead>
+        <th>Name</th>
+      </thead>
+        <% for item in @similar_items %>
+          <tr>
+            <td><%= link_to item.name, item_path(item) %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<% if current_user.role?(:admin) %>
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Price History</span>
+      <table class="striped highlight">
+        <thead>
+          <th>Price</th>
+          <th>Start</th>
+          <th>End</th>
+        </thead>
+          <% for price in @item.item_prices.to_a %>
+            <tr>
+              <td><%= price.price %></td>
+              <td><%= price.start_date  %>
+              <td><%= price.end_date  %>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+
+
+<% end %>

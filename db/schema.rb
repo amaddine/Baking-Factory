@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190107145242) do
+ActiveRecord::Schema.define(version: 20190428165228) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.integer "units_per_item"
     t.float "weight"
     t.boolean "active"
+    t.string "picture"
   end
 
   create_table "order_items", force: :cascade do |t|
