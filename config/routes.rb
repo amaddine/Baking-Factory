@@ -62,7 +62,8 @@ Rails.application.routes.draw do
   resources :items
   get 'item/:id/add_to_cart/:id' => "items#add_to_cart", as: :add_to_cart
   get 'view_cart/remove_from_cart/:id' => "items#remove_from_cart", as: :remove_from_cart
-  
+  get 'view_cart/checkout_cart' => "items#checkout_cart", as: :checkout_cart
+
   get 'users/new', to: 'users#new', as: :signup
   get 'user/edit', to: 'users#edit', as: :edit_current_user
   get 'login', to: 'sessions#new', as: :login

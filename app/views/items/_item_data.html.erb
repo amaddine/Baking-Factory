@@ -19,7 +19,7 @@
 
     <% if @item.picture.nil? == false %>
       <b>Active with PATS?&nbsp;&nbsp;</b>
-        <%= @pet.active ? "Yes" : "No" %><br><br><br>
+        <%= @item.active ? "Yes" : "No" %><br><br><br>
     <% end %>
 
     <%= link_to add_to_cart_path(@item.id), method: 'get', class: 'waves-effect waves-light btn btn-alert' do %>

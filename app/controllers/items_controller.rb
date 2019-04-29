@@ -67,6 +67,14 @@ class ItemsController < ApplicationController
     redirect_to view_cart_path
   end
 
+  def checkout_cart
+    @total_cost = calculate_cart_items_cost()
+    @items_list = get_list_of_items_in_cart()
+    save_each_item_in_cart(current_user.customer.orders.first)
+    clear_cart()
+    redirect_to home_path, notice: "You have successfully placed and order"
+  end
+
 
   private
   def set_item
