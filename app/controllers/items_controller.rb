@@ -56,7 +56,8 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
-    add_item_to_cart(@item.id)
+    id = params[:id]
+    add_item_to_cart(id)
     redirect_to item_path(@item)
   end
 
