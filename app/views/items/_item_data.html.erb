@@ -21,5 +21,9 @@
       <b>Active with PATS?&nbsp;&nbsp;</b>
         <%= @pet.active ? "Yes" : "No" %><br><br><br>
     <% end %>
+
+    <%= link_to add_to_cart_path, method: 'get', class: 'waves-effect waves-light btn btn-alert' do %>
+        &nbsp;<%= "Add to Cart" %>
+    <% end %>
   </div>
 </div>

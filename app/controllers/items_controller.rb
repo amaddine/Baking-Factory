@@ -1,15 +1,19 @@
-  class ItemsController < ApplicationController
+class ItemsController < ApplicationController
+  include AppHelpers::Baking
+  include AppHelpers::Cart
+
   before_action :check_login, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
   authorize_resource
   
   def index
-    # get info on active items for the big three...
+    
     @breads = Item.active.for_category('bread').alphabetical.paginate(:page => params[:page]).per_page(10)
     @muffins = Item.active.for_category('muffins').alphabetical.paginate(:page => params[:page]).per_page(10)
-    @pastries = Item.active.for_category('pastries').alphabetical.paginate(:page => params[:page]).per_page(10)
+    @pastries = Item.active.for_category('pastries').alphabetical.paginate(:page => params[:page]).per_page(10) 
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+
   end
 
   def show
@@ -20,6 +24,7 @@
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).alphabetical.to_a
   end
+
 
   def new
     @item = Item.new
@@ -49,6 +54,18 @@
     @item.destroy
     redirect_to items_url, notice: "#{@item.name} was removed from the system."
   end
+
+  def add_to_cart
+    add_item_to_cart(@item.id)
+    redirect_to item_path(@item)
+  end
+
+  def remove_from_cart
+    id = params[:id]
+    remove_item_from_cart(id)
+    redirect_to view_cart_path
+  end
+
 
   private
   def set_item

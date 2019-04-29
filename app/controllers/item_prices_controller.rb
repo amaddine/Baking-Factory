@@ -1,4 +1,4 @@
-class ItemPriceController < ApplicationController
+class ItemPricesController < ApplicationController
   before_action :set_item_price, only: [:show, :edit, :update]
   before_action :check_login
   authorize_resource
@@ -29,8 +29,8 @@ class ItemPriceController < ApplicationController
 
   def update
     if @item_price.update_attributes(item_price_params)
-      flash[:notice] = "Successfully updated #{@item_price.name}."
-      redirect_to @item_price
+      flash[:notice] = "Successfully updated #{@item_price.item.name}."
+      redirect_to @item_price.item
     else
       render action: 'edit'
     end

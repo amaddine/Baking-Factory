@@ -3,6 +3,6 @@
 <% elsif current_user.role?(:admin) %>
   <%= render :partial => "order_list", locals: {status: 'All', orders: @all_orders} %>
 <% elsif current_user.role?(:shipper) %>
-	  
+  <%= render :partial => "shipper_order_list" %>
 <% end %>
 <br />

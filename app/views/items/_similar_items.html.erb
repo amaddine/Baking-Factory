@@ -32,6 +32,13 @@
             </tr>
           <% end %>
       </table>
+
+      <% if can?(:edit, @item.item_prices.current.first) %>
+        <%= link_to edit_item_price_path(@item.item_prices.current.first), class: 'waves-effect waves-light btn' do %>
+            &nbsp;<%= "Edit #{@item.name} Price" %>
+
+        <% end %>
+      <% end %>
     </div>
   </div>
 

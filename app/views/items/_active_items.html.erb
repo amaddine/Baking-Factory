@@ -1,73 +1,78 @@
-<% if @breads.empty? %>
-  <h4>No breads being sold at this time.</h4>
-<% else %>
-  <%= render :partial => "partials/title_with_search", locals: {title: "Active Customers"} %>
-  <h4>Breads</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @breads.each do |bread| %>
+
+  <% if @breads.empty? %>
+    <h4>No breads being sold at this time.</h4>
+  <% else %>
+    <%= render :partial => "partials/title_with_search", locals: {title: "Active Customers"} %>
+    <h4>Breads</h4>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to bread.name, item_path(bread) %></td>
-          <td><%= bread.description %></td>
+          <th width="225">Name</th>
+          <th width="125">Description</th>
+          <th width="225">Cart Options</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-<p>&nbsp;</p>
+      </thead>
+      <tbody>
+        <% @breads.each do |bread| %>
+          <tr>
+            <td><%= link_to bread.name, item_path(bread) %></td>
+            <td><%= bread.description %></td>
+            <td><%= link_to add_to_cart_path(bread.id), method: 'get', class: 'waves-effect waves-light btn btn-alert' do %>
+        &nbsp;<%= "Add to Cart" %>
+    <% end %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+  <% end %>
+  <p>&nbsp;</p>
 
 
-<% if @muffins.empty? %>
-  <h4>No muffins being sold at this time.</h4>
-<% else %>
-  <h4>Muffins</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @muffins.each do |muffin| %>
+  <% if @muffins.empty? %>
+    <h4>No muffins being sold at this time.</h4>
+  <% else %>
+    <h4>Muffins</h4>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to muffin.name, item_path(muffin) %></td>
-          <td><%= muffin.description %></td>
+          <th width="225">Name</th>
+          <th width="125">Description</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @muffins, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-<p>&nbsp;</p>
+      </thead>
+      <tbody>
+        <% @muffins.each do |muffin| %>
+          <tr>
+            <td><%= link_to muffin.name, item_path(muffin) %></td>
+            <td><%= muffin.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= will_paginate @muffins, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+  <% end %>
+  <p>&nbsp;</p>
 
-<% if @pastries.empty? %>
-  <h4>No pastries being sold at this time.</h4>
-<% else %>
-  <h4>Pastries</h4>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="225">Name</th>
-        <th width="125">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @pastries.each do |pastry| %>
+  <% if @pastries.empty? %>
+    <h4>No pastries being sold at this time.</h4>
+  <% else %>
+    <h4>Pastries</h4>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to pastry.name, item_path(pastry) %></td>
-          <td><%= pastry.description %></td>
+          <th width="225">Name</th>
+          <th width="125">Description</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-<p>&nbsp;</p>
+      </thead>
+      <tbody>
+        <% @pastries.each do |pastry| %>
+          <tr>
+            <td><%= link_to pastry.name, item_path(pastry) %></td>
+            <td><%= pastry.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+  <% end %>
+  <p>&nbsp;</p>
