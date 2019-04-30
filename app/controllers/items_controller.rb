@@ -55,25 +55,31 @@ class ItemsController < ApplicationController
     redirect_to items_url, notice: "#{@item.name} was removed from the system."
   end
 
-  def add_to_cart
-    id = params[:id]
-    add_item_to_cart(id)
-    redirect_to item_path(@item)
-  end
+  # def add_to_cart
+  #   id = params[:id]
+  #   add_item_to_cart(id)
+  #   redirect_to item_path(@item)
+  # end
 
-  def remove_from_cart
-    id = params[:id]
-    remove_item_from_cart(id)
-    redirect_to view_cart_path
-  end
+  # def remove_from_cart
+  #   id = params[:id]
+  #   remove_item_from_cart(id)
+  #   redirect_to view_cart_path
+  # end
 
-  def checkout_cart
-    @total_cost = calculate_cart_items_cost()
-    @items_list = get_list_of_items_in_cart()
-    save_each_item_in_cart(current_user.customer.orders.first)
-    clear_cart()
-    redirect_to home_path, notice: "You have successfully placed and order"
-  end
+  # def checkout_cart
+  #   @total_cost = calculate_cart_items_cost()
+  #   @items_list = get_list_of_items_in_cart()
+  #   save_each_item_in_cart(Order.new)
+  #   clear_cart()
+  #   redirect_to home_path, notice: "You have successfully placed an order"
+  # end
+
+  def baking_list
+    @breads = create_baking_list_for('bread')
+    @muffins = create_baking_list_for('muffins')
+    @pastries = create_baking_list_for('pastries')
+  end 
 
 
   private

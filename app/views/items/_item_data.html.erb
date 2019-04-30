@@ -17,13 +17,15 @@
     <b>Price:&nbsp;&nbsp;</b>
       <%= @item.current_price %><br /><br />
 
-    <% if @item.picture.nil? == false %>
+    <% if @item.picture_url.nil? == false %>
       <b>Active with PATS?&nbsp;&nbsp;</b>
-        <%= @item.active ? "Yes" : "No" %><br><br><br>
+         <p><%= image_tag @item.picture_url %></p>
     <% end %>
 
-    <%= link_to add_to_cart_path(@item.id), method: 'get', class: 'waves-effect waves-light btn btn-alert' do %>
-        &nbsp;<%= "Add to Cart" %>
+
+    <%= link_to(add_to_cart_path(@item.id), method: 'get', :class => 'btn') do %>
+      <i class="material-icons">add_shopping_cart</i>
     <% end %>
+
   </div>
 </div>

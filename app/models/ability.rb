@@ -17,6 +17,7 @@ class Ability
       can :index, Item
       can :show, Item
       can :index, Order
+      can :baking_list, Item
 
 
     elsif user.role? :customer 
@@ -56,6 +57,7 @@ class Ability
       can :checkout, Order
       can :create, Order
       can :add_to_cart, Order
+      can :remove_from_cart, Order
       
       can :create, Address
       

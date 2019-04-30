@@ -5,7 +5,7 @@
 
 
 <p><strong>
-<% if current_user.role?(:admin) %>
+<% if logged_in? && current_user.role?(:admin) %>
 	<%= link_to "Add a New Item", new_item_path, class: 'waves-effect waves-light btn' %> 
 <% end %>
 </strong></p>

@@ -1,15 +1,16 @@
-
-  <% if @breads.empty? %>
+<% if @breads.empty? %>
     <h4>No breads being sold at this time.</h4>
   <% else %>
-    <%= render :partial => "partials/title_with_search", locals: {title: "Active Customers"} %>
+    <%= render :partial => "partials/title_with_search", locals: {title: "Active Items"} %>
     <h4>Breads</h4>
     <table class="table table-striped">
       <thead>
         <tr>
           <th width="225">Name</th>
           <th width="125">Description</th>
-          <th width="225">Cart Options</th>
+          <% if logged_in? %>
+            <th width="225">Cart Options</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -17,9 +18,12 @@
           <tr>
             <td><%= link_to bread.name, item_path(bread) %></td>
             <td><%= bread.description %></td>
-            <td><%= link_to add_to_cart_path(bread.id), method: 'get', class: 'waves-effect waves-light btn btn-alert' do %>
-        &nbsp;<%= "Add to Cart" %>
-    <% end %></td>
+            <% if logged_in? %>
+              <td><%= link_to(add_to_cart_path(bread.id), method: 'get', :class => 'btn') do %>
+                    <i class="material-icons">add_shopping_cart</i>
+                  <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

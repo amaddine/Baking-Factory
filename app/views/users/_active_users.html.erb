@@ -17,7 +17,7 @@
           <td class="align_center"><%= user.active ? "Yes" : "No" %></td>
           <td class="align_center">
             <% if can? :edit, user %>
-              <%= link_to edit_user_path(user) do %>
+              <%= link_to edit_user_path(user), :class => 'btn' do %>
                 <i class="material-icons">edit</i>
               <% end %> 
             <% end %>
