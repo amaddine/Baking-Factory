@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Successfully added #{@user.id} as a user."
+      flash[:notice] = "Successfully added #{@user.username} as a user."
       redirect_to users_url
     else
       render action: 'new'
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:notice] = "Successfully updated #{@user.proper_name}."
+      flash[:notice] = "Successfully updated #{@user.username}."
       redirect_to users_url
     else
       render action: 'edit'
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   end 
 
   def user_params
-    params.require(:user).permit(:username, :role, :active, :password, :password_confirmation)
+    params.require(:user).permit(:role, :active, :username, :password, :password_confirmation)
   end 
 end
