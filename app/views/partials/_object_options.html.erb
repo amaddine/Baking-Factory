@@ -10,6 +10,7 @@
       &nbsp;<%= "Edit #{opt}" %>
   <% end %>
   &nbsp;&nbsp;
+
   
   <% if controller.respond_to?(:destroy) %>
     <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'waves-effect waves-light btn btn-alert') do %>

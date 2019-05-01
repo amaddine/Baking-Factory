@@ -49,7 +49,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:customer_id, :recipient, :street_1, :street_2, :city, :state, :zip, :active, :is_billing, :customer_id)
+    params.require(:address).permit(:customer_id, :recipient, :street_1, :street_2, :city, :state, :zip, :active, :is_billing)
   end
 
 end

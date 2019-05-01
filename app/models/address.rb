@@ -84,8 +84,10 @@ class Address < ApplicationRecord
   end
 
   def reset_prior_billing_address
-    return true unless self.is_billing
-    prior_billing_address = self.customer.addresses.active.billing.first
-    prior_billing_address.update_attribute(:is_billing, false)
-  end
+      return true unless self.is_billing
+      prior_billing_address = self.customer.addresses.active.billing.first
+      unless self == prior_billing_address
+        prior_billing_address.update_attribute(:is_billing, false)
+      end 
+  end 
 end
