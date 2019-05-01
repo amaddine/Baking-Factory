@@ -13,6 +13,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
+    @customer = Customer.find(params[:customer_id])
   end
 
   def edit
@@ -29,11 +30,16 @@ class AddressesController < ApplicationController
   end
 
   def update
-    if @address.update(address_params)
-      redirect_to addresses_path, notice: "The address was revised in the system."
+    if @address.update_attributes(address_params)
+      redirect_to address_path(@address), notice: "The address was revised in the system."
     else
       render action: 'edit'
     end
+  end
+
+  def destroy
+    @address.destroy
+    redirect_to customer_path(@address.customer.id), notice: "Address was removed from the system."
   end
 
 

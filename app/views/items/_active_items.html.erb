@@ -7,9 +7,12 @@
       <thead>
         <tr>
           <th width="225">Name</th>
-          <th width="125">Description</th>
-          <% if logged_in? %>
-            <th width="225">Cart Options</th>
+          <th width="225">Description</th>
+          <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:customer)) %>
+            <th width="125">Cart Options</th>
+          <% end %>
+          <% if logged_in? && current_user.role?(:admin) %>
+            <th width="125">Toggle Status</th>
           <% end %>
         </tr>
       </thead>
@@ -22,6 +25,12 @@
               <td><%= link_to(add_to_cart_path(bread.id), method: 'get', :class => 'btn') do %>
                     <i class="material-icons">add_shopping_cart</i>
                   <% end %>
+              </td>
+            <% end %>
+            <% if logged_in? && current_user.role?(:admin) %>
+              <td><%= link_to toggle_path(bread), method: 'get', :class => 'btn' do %>
+                <i class="material-icons">toggle_on</i>
+                <% end %>
               </td>
             <% end %>
           </tr>
@@ -42,6 +51,12 @@
         <tr>
           <th width="225">Name</th>
           <th width="125">Description</th>
+          <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:customer)) %>
+            <th width="125">Cart Options</th>
+          <% end %>
+          <% if logged_in? && current_user.role?(:admin) %>
+            <th width="125">Toggle Status</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -49,6 +64,18 @@
           <tr>
             <td><%= link_to muffin.name, item_path(muffin) %></td>
             <td><%= muffin.description %></td>
+          <% if logged_in? %>
+              <td><%= link_to(add_to_cart_path(muffin.id), method: 'get', :class => 'btn') do %>
+                    <i class="material-icons">add_shopping_cart</i>
+                  <% end %>
+              </td>
+            <% end %>
+            <% if logged_in? && current_user.role?(:admin) %>
+              <td><%= link_to toggle_path(muffin), method: 'get', :class => 'btn' do %>
+                <i class="material-icons">toggle_on</i>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -66,6 +93,12 @@
         <tr>
           <th width="225">Name</th>
           <th width="125">Description</th>
+          <% if logged_in? && (current_user.role?(:admin) || current_user.role?(:customer)) %>
+            <th width="125">Cart Options</th>
+          <% end %>
+          <% if logged_in? && current_user.role?(:admin) %>
+            <th width="125">Toggle Status</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -73,6 +106,18 @@
           <tr>
             <td><%= link_to pastry.name, item_path(pastry) %></td>
             <td><%= pastry.description %></td>
+            <% if logged_in? %>
+              <td><%= link_to(add_to_cart_path(pastry.id), method: 'get', :class => 'btn') do %>
+                    <i class="material-icons">add_shopping_cart</i>
+                  <% end %>
+              </td>
+            <% end %>
+            <% if logged_in? && current_user.role?(:admin) %>
+              <td><%= link_to toggle_path(pastry), method: 'get', :class => 'btn' do %>
+                <i class="material-icons">toggle_on</i>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

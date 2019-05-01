@@ -23,10 +23,12 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @user = User.new
+    @user = User.new(user_params)
     @user.role = "customer"
+
+    puts :errors
     
-    if !@user.save
+    if !@user.save!
       @customer.valid?
       render action: 'new'
     else
