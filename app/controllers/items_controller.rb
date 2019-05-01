@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   include AppHelpers::Cart
 
   before_action :check_login, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :toggle]
   authorize_resource
   
   def index
@@ -60,7 +60,19 @@ class ItemsController < ApplicationController
     @bread = create_baking_list_for('bread')
     @muffins = create_baking_list_for('muffins')
     @pastries = create_baking_list_for('pastries')
-  end 
+  end
+
+  def toggle
+    if @item.active?
+      @item.active = false
+      @item.save!
+      redirect_to items_url, notice: "#{@item.name} has been made inactive"
+    else
+      @item.active = true
+      @item.save!
+      redirect_to items_url, notice: "#{@item.name} has been made active"
+    end
+  end
 
 
   private

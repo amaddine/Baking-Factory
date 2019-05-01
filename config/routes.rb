@@ -56,13 +56,16 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :order_items
-  resources :item_prices
+  #resources :item_prices
   resources :users
   
   resources :items
   get 'item/:id/add_to_cart/:id' => "orders#add_to_cart", as: :add_to_cart
   get 'view_cart/remove_from_cart/:id' => "orders#remove_from_cart", as: :remove_from_cart
+  get 'item/:id' => "items#toggle", as: :toggle
   get 'baking_list' => "items#baking_list", as: :baking_list
+
+  resources :item_prices
 
   get 'users/new', to: 'users#new', as: :signup
   get 'user/edit', to: 'users#edit', as: :edit_current_user

@@ -12,6 +12,7 @@ class ItemPricesController < ApplicationController
 
   def new
     @item_price = ItemPrice.new
+    @item = Item.find(params[:item_id])
   end
 
   def edit
@@ -20,8 +21,8 @@ class ItemPricesController < ApplicationController
   def create
     @item_price = ItemPrice.new(item_price_params)
     if @item_price.save
-      flash[:notice] = "Successfully added #{@item_price.name}."
-      redirect_to @item_price
+      flash[:notice] = "Successfully updated price."
+      redirect_to item_path(@item_price.item)
     else
       render action: 'new'
     end

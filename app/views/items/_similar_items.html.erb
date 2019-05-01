@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<% if current_user.role?(:admin) %>
+<% if logged_in? && current_user.role?(:admin) %>
   <div class="card">
     <div class="card-content">
       <span class="card-title">Price History</span>
@@ -33,9 +33,11 @@
           <% end %>
       </table>
 
-      <% if can?(:edit, @item.item_prices.current.first) %>
-        <%= link_to edit_item_price_path(@item.item_prices.current.first), class: 'waves-effect waves-light btn' do %>
-            &nbsp;<%= "Edit #{@item.name} Price" %>
+      <br />
+      
+      <% if can? :new, ItemPrice %>
+        <%= link_to new_item_price_path(item_id: @item.id), class: 'waves-effect waves-light btn' do %>
+              &nbsp;<%= "Edit Price" %>
 
         <% end %>
       <% end %>
