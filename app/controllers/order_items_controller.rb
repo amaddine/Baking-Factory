@@ -1,5 +1,7 @@
 class OrderItemsController < ApplicationController
-authorize_resource
+  before_action :set_order_item, only: [:show, :destroy]
+  before_action :check_login
+  authorize_resource
 
   def index
   end
@@ -16,9 +18,10 @@ authorize_resource
 
   def create
     @order_item = OrderItem.new(order_item_params)
+    @order_item.shipped_on = nil
     if @order_item.save
       flash[:notice] = "Successfully added #{@order_item.name}."
-      redirect_to @order_item
+      # redirect_to @order_item
     else
       render action: 'new'
     end
@@ -41,6 +44,6 @@ authorize_resource
   end
 
   def order_item_params
-    params.require(:order_item).permit(:order_id, :item_id, :price, :quantity, :shipped_on)
+    params.require(:order_item).permit(:order_id, :item_id, :quantity, :shipped_on)
   end 
 end

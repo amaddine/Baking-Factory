@@ -26,8 +26,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.date = Date.current
+    @order.grand_total = calculate_cart_items_cost()
     if @order.save
       @order.pay
+      save_each_item_in_cart(@order)
+      clear_cart()
       redirect_to @order, notice: "Thank you for ordering from the Baking Factory."
     else
       render action: 'new'
@@ -60,7 +63,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:address_id, :customer_id, :grand_total)
+    params.require(:order).permit(:address_id, :customer_id, :grand_total, :date, :payment_receipt, :credit_card_number, :expiration_year, :expiration_month)
   end
 
 end

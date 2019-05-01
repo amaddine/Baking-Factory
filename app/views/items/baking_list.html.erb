@@ -1,4 +1,4 @@
-  <% if @breads.empty? %>
+  <% if @bread.empty? %>
     <h4>No breads need to be baked at this time.</h4>
   <% else %>
     <h4>Breads</h4>
@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @breads.each do |name, quantity| %>
+        <% @bread.each do |name, quantity| %>
           <tr>
             <td><%= name %></td>
             <td><%= quantity %></td>

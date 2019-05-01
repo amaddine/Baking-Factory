@@ -1,5 +1,5 @@
 <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: false, input_html: {class: "avg"} %>
 <%= f.input :address_id, collection: get_address_options(current_user), include_blank: true, input_html: {class: "avg"} %>
 <%= f.input :credit_card_number, include_blank: true, input_html: {class: "avg"} %>
-<%= f.input :expiration_year, include_blank: true, input_html: {class: "avg"} %>
+<%= f.input :expiration_year, nclude_blank: true, input_html: {class: "avg"} %>
 <%= f.input :expiration_month, include_blank: true, input_html: {class: "avg"} %>
