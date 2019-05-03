@@ -1,9 +1,12 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "address", 
+<%#= render partial: "partials/index_structure", locals: {model_name: "address", 
                                                          primary: "active_addresses", 
                                                          secondary: "inactive_addresses", 
                                                          sidebar: nil} %>
 
 
-<p><strong>
-<%= link_to "Add a New Address", new_address_path, class: 'waves-effect waves-light btn' %> 
-</strong></p>
+<br />
+
+<%= render partial: "partials/structure1", locals: {model_name: "address", 
+                                                         primary: "tabbed_index", 
+                                                         secondary: nil,
+                                                         sidebar: nil} %>
