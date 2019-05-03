@@ -39,3 +39,9 @@ $(document).ready(function() {
     }
   }
 });
+
+// Tool Tip
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+
