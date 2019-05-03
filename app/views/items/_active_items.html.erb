@@ -19,13 +19,13 @@
             <td><%= bread.description %></td>
             <td class="align_center">
             <% if logged_in? %>
-              <%= link_to(add_to_cart_path(bread.id), method: 'get') do %>
+              <%= link_to(add_to_cart_path(bread.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
                     <i class="material-icons">add_shopping_cart</i>
                   <% end %>
               
             <% end %>
             <% if logged_in? && current_user.role?(:admin) %>
-              <%= link_to toggle_path(bread), method: 'get' do %>
+              <%= link_to toggle_path(bread), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
                 <i class="material-icons">toggle_on</i>
                 <% end %>
               
@@ -38,6 +38,7 @@
   <%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
   <% end %>
   <p>&nbsp;</p>
+
 
 
   <% if @muffins.empty? %>
@@ -60,13 +61,13 @@
             <td><%= muffin.description %></td>
           <td class="align_center">
           <% if logged_in? %>
-              <%= link_to(add_to_cart_path(muffin.id), method: 'get') do %>
+              <%= link_to(add_to_cart_path(muffin.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
                     <i class="material-icons">add_shopping_cart</i>
                   <% end %>
               
             <% end %>
             <% if logged_in? && current_user.role?(:admin) %>
-              <%= link_to toggle_path(muffin), method: 'get' do %>
+              <%= link_to toggle_path(muffin), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
                 <i class="material-icons">toggle_on</i>
                 <% end %>
               
@@ -99,13 +100,13 @@
             <td><%= pastry.description %></td>
             <td class="align_center">
             <% if logged_in? %>
-              <%= link_to(add_to_cart_path(pastry.id), method: 'get') do %>
+              <%= link_to(add_to_cart_path(pastry.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
                     <i class="material-icons">add_shopping_cart</i>
                   <% end %>
               
             <% end %>
             <% if logged_in? && current_user.role?(:admin) %>
-              <%= link_to toggle_path(pastry), method: 'get' do %>
+              <%= link_to toggle_path(pastry), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
                 <i class="material-icons">toggle_on</i>
                 <% end %>
               

@@ -1,19 +1,29 @@
-<h3>Address Information</h3>
+<div class="card">
+	<div class="card-content">
+		<h4>Address Information</h4>
 
-<p>
-  <b>Recipient</b>: <%= @address.recipient %>
-</p>
+		<p>
+		  <b>Recipient</b>: <%= @address.recipient %>
+		</p>
 
-<p>
-  <b>Address</b>: <br />
-  <%= render :partial => "partials/address_info", locals: {address: @address} %>
-</p>
+		<br />
 
-<p>
-  <b>Billing</b>: <%= @address.is_billing ? 'Yes' : 'No' %>
-</p>
+		<p>
+		  <b>Address</b>: <br />
+		  <%= render :partial => "partials/address_info", locals: {address: @address} %>
+		</p>
 
-<p>
-  <b>Active</b>: <%= @address.active ? 'Yes' : 'No' %>
-</p>
+		<br />
+
+		<p>
+		  <b>Billing</b>: <%= @address.is_billing ? 'Yes' : 'No' %>
+		</p>
+
+		<br />
+		
+		<p>
+		  <b>Active</b>: <%= @address.active ? 'Yes' : 'No' %>
+		</p>
+	</div>
+</div>
 
