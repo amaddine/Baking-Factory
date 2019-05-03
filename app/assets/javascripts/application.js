@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require materialize-sprockets
 //= require materialize-form
+//= reqiure turbolinks
 //= require vue
 //= require_tree .
 
@@ -43,5 +44,21 @@ $(document).ready(function() {
 // Tool Tip
 $(document).ready(function(){
     $('.tooltipped').tooltip();
+  });
+
+// Dropdown
+
+// $(document).on('turbolinks:load', function() {
+//   $('.dropdown-trigger').dropdown();
+// });
+// $('.dropdown-trigger').dropdown();
+
+$(document).ready(function() {
+    $('.dropdown-trigger').dropdown({
+      // constrainWidth: true
+      // constrainWidth: true
+      belowOrigin: true
+      // alignment: 'left'
+    });
   });
 

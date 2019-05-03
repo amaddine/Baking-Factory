@@ -37,10 +37,24 @@ main {
   height: 50px;
 }
 
+#nav ul{
+  list-style: none;
+  margin: 0 2px;
+  padding: 0;
+}
+
 #nav ul a {
   color: #ffd600;
   font-size: 1.2rem;
 }
+
+#nav a {
+  color: #ffd600;
+  font-size: 1.2rem;
+}
+
+
+
 
 /********** FLASH MSGS ********/
 #flash_notice, #flash_error, #flash_alert {
@@ -107,6 +121,7 @@ th.align_right {
 th.align_center {
   text-align: center;
 }
+
 
 /********** BUTTONS ********/
 .btn {
