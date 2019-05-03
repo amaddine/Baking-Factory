@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
-    @customer = Customer.find(params[:customer_id])
+    # @customer = Customer.find(params[:customer_id])
   end
 
   def edit
