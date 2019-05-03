@@ -1,17 +1,21 @@
-<h3><%= @customer.proper_name %></h3>
+<div class="card">
+	<div class="card-content">
+		<h3><%= @customer.proper_name %></h3>
 
-<p>
-  <b>Phone</b>: <%= number_to_phone @customer.phone %>
-</p>
+		<p>
+		  <b>Phone</b>: <%= number_to_phone @customer.phone %>
+		</p>
 
-<p>
-  <b>Email</b>: <%= mail_to @customer.email, @customer.email, encode: "javascript" %>
-</p>
+		<p>
+		  <b>Email</b>: <%= mail_to @customer.email, @customer.email, encode: "javascript" %>
+		</p>
 
-<p>
-  <b>Active</b>: <%= @customer.active ? 'Yes' : 'No' %>
-</p>
+		<p>
+		  <b>Active</b>: <%= @customer.active ? 'Yes' : 'No' %>
+		</p>
 
-<p>
-  <em>A Baking Factory customer since <%= @customer.created_at.year %>.</em>
-</p>
+		<p>
+		  <em>A Baking Factory customer since <%= @customer.created_at.year %>.</em>
+		</p>
+	</div>
+</div>

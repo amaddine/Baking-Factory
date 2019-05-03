@@ -1,20 +1,24 @@
-<% unless @previous_orders.empty? %>
-  <div class="panel clearfix">
-    <h3><%= @order.customer.proper_name %> 's Orders</h3>
-    <table class="highlight">
-      <thead>
-        <tr>
-          <th width="120">Date</th>
-          <th width="100">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @previous_orders.each do |order| %>
-        <tr>
-          <td><%= link_to order.date.strftime('%m/%d/%y'), order_path(order) %></td>
-          <td><%= number_to_currency order.grand_total %></td>
-        </tr>
-      <% end %>
-    </table>
+<div class="card">
+  <div class="card-content">
+    <% unless @previous_orders.empty? %>
+      <div class="panel clearfix">
+        <h5>Previous Orders</h5>
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th width="120">Date</th>
+              <th width="100">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @previous_orders.each do |order| %>
+            <tr>
+              <td><%= link_to order.date.strftime('%m/%d/%y'), order_path(order) %></td>
+              <td><%= number_to_currency order.grand_total %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

@@ -16,16 +16,15 @@
               <td><%= quantity %></td>
               <td><%= link_to(remove_from_cart_path(Item.find(item).id), method: 'get', :class => 'btn') do %>
                   <i class="material-icons">remove_shopping_cart</i>
-    <% end %></td>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </table>
       <% end %>
     </div>
-    <div class="form-actions">
-    <%= link_to new_order_path, class: 'waves-effect waves-light btn' do %>
-      &nbsp;Continue with Checkout <%# model_name.pluralize.capitalize %>
-    <% end %>
-    &nbsp;&nbsp;
-    </div>
 </div>
+
+<%= link_to new_order_path, class: 'waves-effect waves-light btn' do %>
+      &nbsp;Continue with Checkout <%# model_name.pluralize.capitalize %>
+<% end %>

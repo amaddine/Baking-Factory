@@ -1,23 +1,27 @@
-<h4>Items</h4>
-  <table class="highlight">
-    <thead>
-      <tr>
-        <th width="100">Name</th>
-        <th width="100">Quantity</th>
-      </tr>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order.order_items.each do |item| %>
-        <tr>
-          <% if current_user.role?(:admin) %>
-            <td><%= link_to item.item.name, order_item_path(item) %></td>
-            <td><%= item.quantity %></td>
-          <% else %>
-            <td><%= item.item.name %></td>
-            <td><%= item.quantity %></td>
+<div class="card">
+  <div class="card-content">
+    <h5>Items</h5>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th width="100">Name</th>
+            <th width="100">Quantity</th>
+          </tr>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |item| %>
+            <tr>
+              <% if current_user.role?(:admin) %>
+                <td><%= link_to item.item.name, order_item_path(item) %></td>
+                <td><%= item.quantity %></td>
+              <% else %>
+                <td><%= item.item.name %></td>
+                <td><%= item.quantity %></td>
+              <% end %>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+  </div>
+</div>

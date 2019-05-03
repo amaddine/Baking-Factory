@@ -1,34 +1,35 @@
-<h4>Addresses</h4>
-  <table class="striped">
-    <thead>
-      <tr>
-        <th width="225">Recipient</th>
-        <th width="350">Address</th>
-        <th width="225">Billing?</th>
-        <th width="225" align="center">Edit</th>
-        <th width="225" align="center">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @customer.addresses.each do |address| %>
-        <tr>
-          <td><%= address.recipient %></td>
-          <td>
-            <%= render :partial => "partials/address_info", locals: {address: address} %>
-          </td>
-          <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
-          <td>
+<div class="card">
+  <div class="card-content">
+    <h5>Addresses</h5>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th width="225">Recipient</th>
+            <th width="350">Address</th>
+            <th width="225">Billing?</th>
+            <th class="align_center">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customer.addresses.each do |address| %>
+            <tr>
+              <td><%= address.recipient %></td>
+              <td>
+                <%= render :partial => "partials/address_info", locals: {address: address} %>
+              </td>
+              <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
+              <td class="align-center">
 
-            <%= link_to(edit_address_path(address), :class => 'btn') do %>
-              <i class="material-icons">edit</i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to(address_path(address), method: 'delete', :class => 'btn') do %>
-              <i class="material-icons">delete</i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+                <%= link_to(edit_address_path(address)) do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+                <%= link_to(address_path(address), method: 'delete') do %>
+                  <i class="material-icons">delete</i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

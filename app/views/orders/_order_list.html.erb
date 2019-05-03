@@ -1,5 +1,5 @@
 <h4><%= status %> Orders</h4>
-  <table class="striped">
+  <table class="striped highlight">
     <thead>
       <tr>
         <th width="100">Date</th>
@@ -19,4 +19,5 @@
       <% end %>
     </tbody>
   </table>
+<br />
 <%= will_paginate orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
