@@ -1,9 +1,10 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "customer", 
+<%#= render partial: "partials/index_structure", locals: {model_name: "customer", 
                                                          primary: "active_customers", 
                                                          secondary: "inactive_customers",
                                                          sidebar: nil} %>
 
 
-<p><strong>
-<%= link_to "Add a New Customer", new_customer_path, class: 'waves-effect waves-light btn' %> 
-</strong></p>
+<%= render partial: "partials/structure1", locals: {model_name: "customer", 
+                                                         primary: "tabbed_index", 
+                                                         secondary: nil,
+                                                         sidebar: nil} %>
