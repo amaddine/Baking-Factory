@@ -1,37 +1,42 @@
-<% if addresses.empty? %>
-  <p><em>There are no <%= state %> addresses at this time.</em></p>
-<% else %>
-<h4><%= state.capitalize %> Addresses</h4>
-<table class="striped highlight">
-  <thead>
-    <tr>
-      <th width="225">Customer</th>
-      <th width="225">Recipient</th>
-      <th width="350">Address</th>
-      <th width="75">Billing?</th>
-      <th width="75">&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% addresses.each do |address| %>
-      <tr>
-        <td><%= link_to address.customer.proper_name, customer_path(address.customer) %></td>
-        <td><%= address.recipient %></td>
-        <td>
-          <%= render :partial => "partials/address_info", locals: {address: address} %>
-        </td>
-        <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
-        <td>
+<div class="card">
+  <div class="card-content">
+    <% if addresses.empty? %>
+      <p><em>There are no <%= state %> addresses at this time.</em></p>
+    <% else %>
+    <h4><%= state.capitalize %> Addresses</h4>
+    <table class="striped highlight">
+      <thead>
+        <tr>
+          <th width="225">Customer</th>
+          <th width="225">Recipient</th>
+          <th width="350">Address</th>
+          <th width="75">Billing?</th>
+          <th width="75">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% addresses.each do |address| %>
+          <tr>
+            <td><%= link_to address.customer.proper_name, customer_path(address.customer) %></td>
+            <td><%= address.recipient %></td>
+            <td>
+              <%= render :partial => "partials/address_info", locals: {address: address} %>
+            </td>
+            <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
+            <td>
 
-          <%= link_to(edit_address_path(address), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Edit') do %>
-                    <i class="material-icons">edit</i>
-                  <% end %>
+              <%= link_to(edit_address_path(address), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Edit') do %>
+                        <i class="material-icons">edit</i>
+                      <% end %>
 
-        </td>
-      </tr>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+    <%= will_paginate addresses, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
     <% end %>
-  </tbody>
-</table>
-<%= will_paginate addresses, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-<% end %>
-<p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+</div>

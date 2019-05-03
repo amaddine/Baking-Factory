@@ -1,12 +1,16 @@
-<% if @inactive_customers.empty? %>
-	<p><em>No inactive customers at this time.</em></p>
-<% else %>
-  <div class="panel clearfix">
-    <h4>Inactive Customers</h4>
-    <ul>
-      <% @inactive_customers.each do |customer| %>
-        <li><%= link_to customer.name, customer_path(customer) %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="card">
+	<div class="card-content">
+		<% if @inactive_customers.empty? %>
+			<p><em>No inactive customers at this time.</em></p>
+		<% else %>
+		  <div class="panel clearfix">
+		    <h4>Inactive Customers</h4>
+		    <ul>
+		      <% @inactive_customers.each do |customer| %>
+		        <li><%= link_to customer.name, customer_path(customer) %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+	</div>
+</div>
