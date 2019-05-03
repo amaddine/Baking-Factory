@@ -85,6 +85,10 @@ class Ability
       can :show, Order
       can :show, Address
 
+      can :shipper_list, User
+      can :set_shipped, OrderItem
+      can :unset_shipped, OrderItem
+
       
     else
       can :show, Item

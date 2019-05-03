@@ -1,0 +1,41 @@
+
+<% if Order.not_shipped.empty? %>
+    <h4>No breads need to be baked at this time.</h4>
+<% else %>
+    <h4>To be shipped</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="125">Item Name</th>
+          <th width="125">Quantity</th>
+          <th width="125">Address</th>
+          <th width="125">Shipped Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Order.not_shipped.each do |order| %>
+          <% order.order_items.each do |item| %>
+            <tr>
+              <td><%= item.item.name %></td>
+              <td><%= item.quantity %></td>
+              <td><%= order.address.street_1 %></td>
+              <td>
+                <% if item.shipped_on.nil? %>
+                  <%= link_to(set_shipped_path(item.id), method: 'get', :class => 'btn') do %>
+                    <i class="material-icons">check_box</i>
+                  <% end %>
+                <% else %>
+                  <%= link_to(unset_shipped_path(item.id), method: 'get', :class => 'btn') do %>
+                    <i class="material-icons">check_box</i>
+                  <% end %>
+                <% end %>
+              </td> 
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+      <p>&nbsp;</p>
+    </table>
+<% end %>
+
+

@@ -36,6 +36,9 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def shipper_list
+  end
+
   private
   def set_user
     @user = User.find(params[:id])

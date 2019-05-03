@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: [:show, :destroy]
+  before_action :set_order_item, only: [:show, :destroy, :set_shipped]
   before_action :check_login
   authorize_resource
 
@@ -36,6 +36,18 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def set_shipped
+    @order_item.shipped_on = Date.current
+    @order_item.save!
+    redirect_to shipper_list_path
+  end
+
+  def unset_shipped
+    @order_item.shipped_on = nil
+    @order_item.save!
+    redirect_to shipper_list_path
   end
 
   private

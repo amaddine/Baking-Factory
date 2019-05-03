@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :order_items
+  get 'shipper_list/set_shipped/:id' => 'order_items#set_shipped', as: :set_shipped
+  get 'shipper_list/unset_shipped/:id' => 'order_items#unset_shipped', as: :unset_shipped
   #resources :item_prices
   resources :users
   
@@ -72,6 +74,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
   get 'view_cart', to: 'sessions#view_cart', as: :view_cart
+
+  get 'shipper_list', to: 'users#shipper_list', as: :shipper_list
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
