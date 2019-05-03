@@ -20,12 +20,14 @@
               <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
               <td class="align-center">
 
-                <%= link_to(edit_address_path(address)) do %>
-                  <i class="material-icons">edit</i>
-                <% end %>
-                <%= link_to(address_path(address), method: 'delete') do %>
-                  <i class="material-icons">delete</i>
-                <% end %>
+                <%= link_to(edit_address_path(address), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Edit') do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+
+                  <%= link_to(address_path(address), method: 'delete', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Delete') do %>
+                    <i class="material-icons">delete</i>
+                  <% end %>
+
               </td>
             </tr>
           <% end %>
