@@ -71,6 +71,11 @@ class Ability
         my_addresses.include? this_address.id 
       end
 
+      can :destroy, Address do |this_address|  
+        my_addresses = user.customer.addresses.map(&:id)
+        my_addresses.include? this_address.id 
+      end
+
       can :index, Address
 
 

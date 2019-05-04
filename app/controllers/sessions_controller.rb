@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
     
     if user
       session[:user_id] = user.id
-      redirect_to home_path, notice: "Logged in!"
+      if user.role?(:shipper)
+        redirect_to shipper_list_path
+      else 
+        redirect_to home_path, notice: "Logged in!"
+      end
     else
       flash.now.alert = "Username and/or password is invalid"
       render "new"
