@@ -1,8 +1,9 @@
 html {
   // Preloaded with four fonts; uncomment the one you prefer
-  font-family: 'Nunito', sans-serif;
+  // font-family: 'Concert One', regular;
+  // font-family: 'Nunito', sans-serif;
   // font-family: 'Bitter', serif;
-  // font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   // font-family: 'Varela Round', sans-serif;
 }
 
@@ -21,35 +22,35 @@ main {
 }
 
 .home_link {
-  color: #ffd600;
+  color: #F4A950;
 }
 
 /********** TOPBAR & NAV ********/
 #topbar {
-  background-color: #8B5C10;
+  background-color: #161B21;
   padding-top: 5px;
   margin-bottom: 0px;
   color: #ffd600;
 }
 
 #nav {
-  background-color: #8B5C10;
+  background-color: #161B21;
   height: 50px;
 }
 
 #nav ul{
   list-style: none;
-  margin: 0 2px;
+  margin: 0 10px;
   padding: 0;
 }
 
 #nav ul a {
-  color: #ffd600;
+  color: #F4A950;
   font-size: 1.2rem;
 }
 
 #nav a {
-  color: #ffd600;
+  color: #F4A950;
   font-size: 1.2rem;
 }
 
@@ -77,16 +78,16 @@ main {
 /********** FOOTER ********/
 
 #footer {
-  background-color: #8B5C10;
+  background-color: #161B21;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 0px;
-  color: #d6b50f;
+  color: #F4A950;
   line-height: 2rem;
 }
 
 #footer a {
-  color: #ffd600;
+  color: #F4A950;
 }
 
 /********** TABLES ********/
@@ -99,11 +100,12 @@ table.striped > tbody > tr:nth-child(even) {
 }
 
 table.highlight > tbody > tr:hover {
-  background-color: #fff59d;
+  // background-color: #F4A950;
+  background-color: #D9B382;
 }
 
 table.lined > tbody > tr {
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #F4A950;
 }
 
 td.align_right {
@@ -125,12 +127,12 @@ th.align_center {
 
 /********** BUTTONS ********/
 .btn {
-  background-color: #ffd600;
+  background-color: #F4A950;
   color: #000;
 }
 
 .btn:hover {
-  background-color: #ffff00;
+  background-color: #ffd600;
   color: #000;
 }
 

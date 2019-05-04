@@ -38,8 +38,11 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address.destroy
-    redirect_to customer_path(@address.customer.id), notice: "Address was removed from the system."
+    if @address.destroy
+      redirect_to customer_path(@address.customer.id), notice: "Address was removed from the system."
+    else 
+      redirect_to customer_path(@address.customer.id), notice: "The address cannot be deleted at this time"
+    end
   end
 
 
