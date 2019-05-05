@@ -25,6 +25,17 @@ main {
   color: #F4A950;
 }
 
+/********** CARD TITLE ********/
+
+.card .card-image .card-title {
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 24px;
+}
+
 /********** TOPBAR & NAV ********/
 #topbar {
   background-color: #161B21;
