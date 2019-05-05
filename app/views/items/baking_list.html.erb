@@ -1,69 +1,81 @@
-  <% if @bread.empty? %>
-    <h4>No breads need to be baked at this time.</h4>
-  <% else %>
-    <h4>Breads</h4>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th width="225">Name</th>
-          <th width="125">Quantity</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bread.each do |name, quantity| %>
-          <tr>
-            <td><%= name %></td>
-            <td><%= quantity %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+  <br />
+  <div class="card">
+    <div class="card-content">
+      <% if @bread.empty? %>
+        <h4>No breads need to be baked at this time.</h4>
+      <% else %>
+        <h4>Breads</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="225">Name</th>
+              <th width="125">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bread.each do |name, quantity| %>
+              <tr>
+                <td><%= name %></td>
+                <td><%= quantity %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
   <p>&nbsp;</p>
+  </div>
+</div>
 
+  <div class="card">
+    <div class="card-content">
+      <% if @muffins.empty? %>
+        <h4>No muffins need to be baked at this time.</h4>
+      <% else %>
+        <h4>Muffins</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="225">Name</th>
+              <th width="125">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @muffins.each do |name, quantity| %>
+              <tr>
+                <td><%= name %></td>
+                <td><%= quantity %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <p>&nbsp;</p>
+    </div>
+  </div>
 
-  <% if @muffins.empty? %>
-    <h4>No muffins need to be baked at this time.</h4>
-  <% else %>
-    <h4>Muffins</h4>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th width="225">Name</th>
-          <th width="125">Quantity</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @muffins.each do |name, quantity| %>
-          <tr>
-            <td><%= name %></td>
-            <td><%= quantity %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  <p>&nbsp;</p>
-
-  <% if @pastries.empty? %>
-    <h4>No pastries need to be baked at this time.</h4>
-  <% else %>
-    <h4>Pastries</h4>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th width="225">Name</th>
-          <th width="125">Quantity</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @breads.each do |name, quantity| %>
-          <tr>
-            <td><%= name %></td>
-            <td><%= quantity %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  <p>&nbsp;</p>
+  <div class="card">
+    <div class="card-content">
+      <% if @pastries.empty? %>
+        <h4>No pastries need to be baked at this time.</h4>
+      <% else %>
+        <h4>Pastries</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="225">Name</th>
+              <th width="125">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @breads.each do |name, quantity| %>
+              <tr>
+                <td><%= name %></td>
+                <td><%= quantity %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <p>&nbsp;</p>
+    </div>
+  </div>

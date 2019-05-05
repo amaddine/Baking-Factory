@@ -24,16 +24,16 @@
     <br />
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Most Popular Items</span>
+        <span class="card-title">My Previous Orders</span>
         <table class="striped">
           <tbody>
-            <% OrderItem.limit(5).group(:item_id).count().each do |item_id, count| %>
+            <% current_user.customer.orders.limit(5).each do |order| %>
               <tr>
                 <td>
-                  <%= link_to Item.find(item_id).name, item_path(Item.find(item_id)) %>
+                  <%= link_to order.date, order_path(order) %>
                 </td>
                 <td>
-                  <%= count %>
+                  <%= order.grand_total %>
                 </td>
               </tr>
             <% end %>
