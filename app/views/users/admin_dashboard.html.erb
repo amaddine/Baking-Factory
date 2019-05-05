@@ -48,6 +48,21 @@
     <br />
     <div class="card">
       <div class="card-content">
+        <span class="card-title">Frequent Customers</span>
+        <table class="striped">
+          <tbody>
+            <% Order.limit(5).group(:customer_id).count().each do |customer_id, count| %>
+              <tr>
+                <td>
+                  <%= link_to Customer.find(customer_id).name, customer_path(Customer.find(customer_id)) %>
+                </td>
+                <td>
+                  <%= count %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
