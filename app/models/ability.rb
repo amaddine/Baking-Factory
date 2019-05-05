@@ -35,6 +35,8 @@ class Ability
       can :index, Item
       can :show, Item
 
+      can :customer_dashboard, User
+
       can :update, Customer do |this_customer|
         this_customer == user.customer
       end
