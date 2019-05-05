@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       if user.role?(:shipper)
         redirect_to shipper_list_path
+      elsif user.role?(:baker)
+        redirect_to baking_list_path
+      elsif user.role?(:admin)
+        redirect_to admin_dashboard_path
       else 
         redirect_to home_path, notice: "Logged in!"
       end

@@ -14,7 +14,7 @@
             <tr>
               <td><%= Item.find(item).name %></td>
               <td><%= quantity %></td>
-              <td><%= link_to(remove_from_cart_path(Item.find(item).id), method: 'get', :class => 'btn') do %>
+              <td><%= link_to(remove_from_cart_path(Item.find(item).id), method: 'get', :class => 'btn tooltipped', 'data-position' => 'right', 'data-tooltip' => "Remove From Cart") do %>
                   <i class="material-icons">remove_shopping_cart</i>
                 <% end %>
               </td>

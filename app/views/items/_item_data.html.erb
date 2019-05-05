@@ -22,12 +22,12 @@
          <p><%= image_tag @item.picture_url %></p>
     <% end %>
 
+    <%= link_to(add_to_cart_path(@item.id), method: 'get', class: 'btn tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
+                        <i class="material-icons">add_shopping_cart</i>
+                      <% end %>
 
-    <%= link_to(add_to_cart_path(@item.id), method: 'get', :class => 'btn') do %>
-      <i class="material-icons">add_shopping_cart</i>
-    <% end %>
 
-    <%= link_to toggle_path, method: 'get', :class => 'btn' do %>
+    <%= link_to toggle_path, method: 'get', :class => 'btn tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
       <i class="material-icons">toggle_on</i>
     <% end %>
 

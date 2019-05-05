@@ -1,9 +1,10 @@
 <div class="card">
   <div class="card-content">
+    <%= render :partial => "partials/title_with_search", locals: {title: "Active Items"} %>
     <% if @breads.empty? %>
         <h4>No breads being sold at this time.</h4>
       <% else %>
-        <%= render :partial => "partials/title_with_search", locals: {title: "Active Items"} %>
+        
         <h4>Breads</h4>
         <table class="striped highlight">
           <thead>

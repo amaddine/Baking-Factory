@@ -41,6 +41,8 @@ class OrdersController < ApplicationController
     id = params[:id]
     add_item_to_cart(id)
     redirect_to items_path, notice: "You have added #{Item.find(id).name} to your cart"
+    # flash[:notice] = "You have added #{Item.find(id).name} to your cart"
+    # render nothing: true
   end
 
   def remove_from_cart

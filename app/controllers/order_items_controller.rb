@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order_item, only: [:show, :destroy, :set_shipped]
+  before_action :set_order_item, only: [:show, :destroy, :set_shipped, :unset_shipped]
   before_action :check_login
   authorize_resource
 

@@ -1,3 +1,4 @@
+<br />
 <div class="card">
   <div class="card-content">
     <% if Order.not_shipped.empty? %>
@@ -22,11 +23,11 @@
                   <td><%= order.address.street_1 %></td>
                   <td>
                     <% if item.shipped_on.nil? %>
-                      <%= link_to(set_shipped_path(item.id), method: 'get', :class => 'btn') do %>
-                        <i class="material-icons">check_box</i>
+                      <%= link_to(set_shipped_path(item.id), method: 'get', :class => 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Check off') do %>
+                        <i class="material-icons">check_box_outline_blank</i>
                       <% end %>
                     <% else %>
-                      <%= link_to(unset_shipped_path(item.id), method: 'get', :class => 'btn') do %>
+                      <%= link_to(unset_shipped_path(item.id), method: 'get', :class => 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Uncheck item') do %>
                         <i class="material-icons">check_box</i>
                       <% end %>
                     <% end %>
@@ -40,5 +41,7 @@
     <% end %>
   </div>
 </div>
+
+
 
 
