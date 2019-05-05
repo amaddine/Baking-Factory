@@ -42,6 +42,9 @@ class UsersController < ApplicationController
   def admin_dashboard
   end
 
+  def customer_dashboard
+  end
+
   private
   def set_user
     @user = User.find(params[:id])

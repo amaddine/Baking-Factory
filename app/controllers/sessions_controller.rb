@@ -17,6 +17,8 @@ class SessionsController < ApplicationController
         redirect_to baking_list_path
       elsif user.role?(:admin)
         redirect_to admin_dashboard_path
+      elsif user.role?(:customer)
+        redirect_to customer_dashboard_path
       else 
         redirect_to home_path, notice: "Logged in!"
       end
