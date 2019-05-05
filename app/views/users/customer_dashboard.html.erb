@@ -4,23 +4,17 @@
     <div class="card">
       <div class="card-image">
         <% if Item.all.sample(1).first.picture_url.nil? == false %>
-          <p><%= image_tag Item.all.sample(1).first %></p>
+          <%= image_tag Item.all.sample(1).first %>
+        <% else %>
+          <%= image_tag "/assets/not_found.png"%>
         <% end %>
+        <%= link_to(add_to_cart_path(Item.all.sample(1).first.id), method: 'get', class: 'btn-floating halfway-fab') do %>
+                        <i class="material-icons">add_shopping_cart</i>
+                      <% end %>
       </div>
       <div class="card-content">
         <span class="card-title"><%= Item.all.sample(1).first.name %></span>
-        <table class="striped">
-          <tbody>
-            <% Customer.order('created_at DESC').limit(5).to_a.each do |customer| %>
-              <tr>
-                <td>
-                  <%= link_to customer.name, customer_path(customer) %> 
-                    
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <p><%= Item.all.sample(1).first.description %></p>
 
       </div>
     </div>

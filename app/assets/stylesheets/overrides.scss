@@ -36,6 +36,16 @@ main {
     padding: 24px;
 }
 
+.btn-floating i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    color: #000;
+    background-color: #F4A950;
+    font-size: 1.6rem;
+    line-height: 40px;
+}
+
 /********** TOPBAR & NAV ********/
 #topbar {
   background-color: #161B21;
