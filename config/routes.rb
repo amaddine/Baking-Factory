@@ -77,6 +77,8 @@ Rails.application.routes.draw do
 
   get 'shipper_list', to: 'users#shipper_list', as: :shipper_list
 
+  get 'admin_dashboard', to: 'users#admin_dashboard', as: :admin_dashboard
+
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about
