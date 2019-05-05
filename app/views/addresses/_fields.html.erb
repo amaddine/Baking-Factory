@@ -1,5 +1,8 @@
 <% if current_user.role?(:admin) %>
-	<%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>   
+
+	<%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+
+
 	<%= f.input :recipient, label_html: { class: 'active' } %>
 	<%= f.input :street_1, label_html: { class: 'active' } %>
 	<%= f.input :street_2, label_html: { class: 'active' } %>
@@ -8,6 +11,8 @@
 	<%= f.input :zip, label_html: { class: 'active' } %>
 	<%= f.input :is_billing, label: 'Billing? ' %>
 	<%= f.input :active %>
+
+
 <% elsif current_user.role?(:customer) %>
 	<%= f.input :recipient, label_html: { class: 'active' } %>
 	<%= f.input :street_1, label_html: { class: 'active' } %>
