@@ -1,134 +1,143 @@
-<div class="card">
-  <div class="card-content">
-    <%= render :partial => "partials/title_with_search", locals: {title: "Active Items"} %>
-    <% if @breads.empty? %>
-        <h4>No breads being sold at this time.</h4>
-      <% else %>
-        
-        <h4>Breads</h4>
-        <table class="striped highlight">
-          <thead>
-            <tr>
-              <th width="225">Name</th>
-              <th width="225">Description</th>
-              <th class="align_center">Options</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            <% @breads.each do |bread| %>
-              <tr>
-                <td><%= link_to bread.name, item_path(bread) %></td>
-                <td><%= bread.description %></td>
-                <td class="align_center">
-                <% if logged_in? %>
-                  <%= link_to(add_to_cart_path(bread.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
-                        <i class="material-icons">add_shopping_cart</i>
-                      <% end %>
-                  
-                <% end %>
-                <% if logged_in? && current_user.role?(:admin) %>
-                  <%= link_to toggle_path(bread), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
-                    <i class="material-icons">toggle_on</i>
-                    <% end %>
-                  
-                <% end %>
-              </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-      <% end %>
-      <p>&nbsp;</p>
-    </div>
-  </div>
 
 
-<div class="card">
-  <div class="card-content">  
-  <% if @muffins.empty? %>
-    <h4>No muffins being sold at this time.</h4>
-  <% else %>
-    <h4>Muffins</h4>
-    <table class="striped highlight">
-      <thead>
-        <tr>
-          <th width="225">Name</th>
-          <th width="225">Description</th>
-          <th class="align_center">Options</th>
+  <div class="card">
+    <div class="card-content">
+      <%= render :partial => "partials/title_with_search", locals: {title: "Active Items"} %>
+      <% if @breads.empty? %>
+          <h4>No breads being sold at this time.</h4>
+        <% else %>
           
-        </tr>
-      </thead>
-      <tbody>
-        <% @muffins.each do |muffin| %>
-          <tr>
-            <td><%= link_to muffin.name, item_path(muffin) %></td>
-            <td><%= muffin.description %></td>
-          <td class="align_center">
-          <% if logged_in? %>
-              <%= link_to(add_to_cart_path(muffin.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
-                    <i class="material-icons">add_shopping_cart</i>
-                  <% end %>
-              
-            <% end %>
-            <% if logged_in? && current_user.role?(:admin) %>
-              <%= link_to toggle_path(muffin), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
-                <i class="material-icons">toggle_on</i>
+          <h4>Breads</h4>
+          <table class="striped highlight">
+            <thead>
+              <tr>
+                <th width="225">Name</th>
+                <th width="225">Description</th>
+                <% if logged_in? %>
+                  <th class="align_center">Options</th>
                 <% end %>
-              
-            <% end %>
-          </td>
-          </tr>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <% @breads.each do |bread| %>
+                <tr>
+                  <td><%= link_to bread.name, item_path(bread) %></td>
+                  <td><%= bread.description %></td>
+                  <td class="align_center">
+                  <% if logged_in? %>
+                    <%= link_to(add_to_cart_path(bread.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
+                          <i class="material-icons">add_shopping_cart</i>
+                        <% end %>
+                    
+                  <% end %>
+                  <% if logged_in? && current_user.role?(:admin) %>
+                    <%= link_to toggle_path(bread), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
+                      <i class="material-icons">toggle_on</i>
+                      <% end %>
+                    
+                  <% end %>
+                </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%= will_paginate @breads, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
         <% end %>
-      </tbody>
-    </table>
-  <%= will_paginate @muffins, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-  <% end %>
-  <p>&nbsp;</p>
-</div>
-</div>
+        <p>&nbsp;</p>
+      </div>
+    </div>
 
-<div class="card">
-  <div class="card-content">
 
-  <% if @pastries.empty? %>
-    <h4>No pastries being sold at this time.</h4>
-  <% else %>
-    <h4>Pastries</h4>
-    <table class="striped highlight">
-      <thead>
-        <tr>
-          <th width="225">Name</th>
-          <th width="225">Description</th>
-          <th class="align_center">Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @pastries.each do |pastry| %>
+  <div class="card">
+    <div class="card-content">  
+    <% if @muffins.empty? %>
+      <h4>No muffins being sold at this time.</h4>
+    <% else %>
+      <h4>Muffins</h4>
+      <table class="striped highlight">
+        <thead>
           <tr>
-            <td><%= link_to pastry.name, item_path(pastry) %></td>
-            <td><%= pastry.description %></td>
+            <th width="225">Name</th>
+            <th width="225">Description</th>
+            <% if logged_in? %>
+                  <th class="align_center">Options</th>
+            <% end %>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% @muffins.each do |muffin| %>
+            <tr>
+              <td><%= link_to muffin.name, item_path(muffin) %></td>
+              <td><%= muffin.description %></td>
             <td class="align_center">
             <% if logged_in? %>
-              <%= link_to(add_to_cart_path(pastry.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
-                    <i class="material-icons">add_shopping_cart</i>
+                <%= link_to(add_to_cart_path(muffin.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
+                      <i class="material-icons">add_shopping_cart</i>
+                    <% end %>
+                
+              <% end %>
+              <% if logged_in? && current_user.role?(:admin) %>
+                <%= link_to toggle_path(muffin), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
+                  <i class="material-icons">toggle_on</i>
                   <% end %>
-              
+                
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%= will_paginate @muffins, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+    <% end %>
+    <p>&nbsp;</p>
+  </div>
+  </div>
+
+  <div class="card">
+    <div class="card-content">
+
+    <% if @pastries.empty? %>
+      <h4>No pastries being sold at this time.</h4>
+    <% else %>
+      <h4>Pastries</h4>
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th width="225">Name</th>
+            <th width="225">Description</th>
+            <% if logged_in? %>
+                  <th class="align_center">Options</th>
             <% end %>
-            <% if logged_in? && current_user.role?(:admin) %>
-              <%= link_to toggle_path(pastry), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
-                <i class="material-icons">toggle_on</i>
-                <% end %>
-              
-            <% end %>
-          </td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
-  <% end %>
-  <p>&nbsp;</p>
-</div>
-</div>
+        </thead>
+        <tbody>
+          <% @pastries.each do |pastry| %>
+            <tr>
+              <td><%= link_to pastry.name, item_path(pastry) %></td>
+              <td><%= pastry.description %></td>
+              <td class="align_center">
+              <% if logged_in? %>
+                <%= link_to(add_to_cart_path(pastry.id), method: 'get', class: 'tooltipped', 'data-position' => 'left', 'data-tooltip' => 'Add to Cart') do %>
+                      <i class="material-icons">add_shopping_cart</i>
+                    <% end %>
+                
+              <% end %>
+              <% if logged_in? && current_user.role?(:admin) %>
+                <%= link_to toggle_path(pastry), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Toggle Status' do %>
+                  <i class="material-icons">toggle_on</i>
+                  <% end %>
+                
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%= will_paginate @pastries, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+    <% end %>
+    <p>&nbsp;</p>
+  </div>
+  </div>
+

@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def admin_dashboard
+    @items = Item.group(:category).count
   end
 
   def customer_dashboard

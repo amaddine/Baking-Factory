@@ -49,7 +49,7 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">Frequent Customers</span>
-        <%= bar_chart Item.group(:category).count %>
+        <%= bar_chart @items %>
       </div>
     </div>
   </div>
