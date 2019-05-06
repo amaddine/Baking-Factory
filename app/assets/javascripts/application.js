@@ -15,6 +15,8 @@
 //= require materialize-sprockets
 //= require materialize-form
 //= reqiure turbolinks
+//= require highcharts
+//= require chartkick
 //= require vue
 //= require_tree .
 
