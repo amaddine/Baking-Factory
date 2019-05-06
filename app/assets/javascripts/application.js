@@ -18,6 +18,7 @@
 //= require highcharts
 //= require chartkick
 //= require vue
+//= require best_in_place
 //= require_tree .
 
 // @import "materialize";
@@ -64,3 +65,7 @@ $(document).ready(function() {
     });
   });
 
+
+$(document).ready(function() {
+  jQuery(".best_in_place").best_in_place();
+});
