@@ -46,17 +46,18 @@
   <div class="col s4">
     <br />
     <div class="card">
-      <div class="card-content">
-        <span class="card-title">Frequent Customers</span>
+      <div class="card-content">Favorite Items</span>
         <table class="striped">
           <tbody>
-            <% Order.limit(5).group(:customer_id).count().each do |customer_id, count| %>
+            <% current_user.customer.orders.last.order_items.each do |order_item| %>
               <tr>
                 <td>
-                  <%= link_to Customer.find(customer_id).name, customer_path(Customer.find(customer_id)) %>
+                  <%= link_to Item.find(order_item.item_id).name, item_path(Item.find(order_item.item_id)) %>
                 </td>
                 <td>
-                  <%= count %>
+                  <%= link_to(add_to_cart_path(Item.find(order_item.item_id).id), method: 'get', class: 'tooltipped', 'data-position' => 'right', 'data-tooltip' => 'Add to Cart') do %>
+                          <i class="material-icons">add_shopping_cart</i>
+                        <% end %>
                 </td>
               </tr>
             <% end %>
